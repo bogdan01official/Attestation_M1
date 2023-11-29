@@ -42,7 +42,7 @@ def get_users():
     conn = sqlite3.connect("mydatabase.db")
     cursor = conn.cursor()
 
-    cursor.execute("""SELECT * FROM users""")
+    cursor.execute('SELECT * FROM users')
 
     result = cursor.fetchall()
     print(result)
