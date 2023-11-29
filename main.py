@@ -38,11 +38,22 @@ def add_users():
     conn.commit()
     conn.close()
 
+def get_users():
+    conn = sqlite3.connect("mydatabase.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""SELECT * FROM users""")
+
+    result = cursor.fetchall()
+    print(result)
+    conn.close()
+
 try:
     create_users()
 except:
-    print("уже существует")
+    print("Уже существует")
     add_users()
+    get_users()
 
 
 
@@ -74,8 +85,18 @@ def add_products():
     conn.commit()
     conn.close()
 
+def get_products():
+    conn = sqlite3.connect("mydatabase.db")
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT * FROM products')
+    result = cursor.fetchall()
+    print(result)
+    conn.close()
+
 try:
     create_products()
 except:
     print("Уже существует")
     add_products()
+    get_products()
